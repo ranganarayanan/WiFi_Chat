@@ -30,6 +30,7 @@
         app:cardBackgroundColor="#CECECE"
         android:id="@+id/connecttoserver_cv"
         android:layout_below="@+id/etPort"
+        android:layout_marginLeft="18dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,7 +82,8 @@
         app:cardBackgroundColor="#CECECE"
         android:layout_alignParentBottom = "true"
         android:id="@+id/send_cv"
-
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="10dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
