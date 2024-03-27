@@ -1,8 +1,10 @@
 package com.example.wifi_chat;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -44,6 +47,9 @@ public class ServerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.white));
+        }
         tvIP = findViewById(R.id.tvIP);
         tvPort = findViewById(R.id.tvPort);
         tvMessages = findViewById(R.id.tvMessages);
@@ -88,6 +94,7 @@ public class ServerActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         tvMessages.setText("Not connected");
+                        tvMessages.setTextColor(Color.parseColor("#FF0000"));
                         tvIP.setText("IP: " + SERVER_IP);
                         tvPort.setText("Port: " + String.valueOf(SERVER_PORT));
                     }
@@ -99,6 +106,7 @@ public class ServerActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         tvMessages.setText("Connected");
+                        tvMessages.setTextColor(Color.parseColor("#00FF00"));
                     }
                 });
                 new Thread(new Thread2()).start();

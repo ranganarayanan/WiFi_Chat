@@ -1,6 +1,7 @@
 package com.example.wifi_chat;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -81,7 +82,9 @@ public class ClientActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         tvMessages.setText("Connected");
+                        tvMessages.setTextColor(Color.parseColor("#00FF00"));
                     }
                 });
                 new Thread(new Thread2()).start();
