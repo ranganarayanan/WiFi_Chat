@@ -66,11 +66,9 @@ public class ClientActivity extends AppCompatActivity {
                 if (!message.isEmpty()) {
                     new Thread(new Thread3(message)).start();
                 }
-
             }
         });
     }
-
     class Thread1 implements Runnable {
         @Override
         public void run() {
