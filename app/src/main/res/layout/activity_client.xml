@@ -58,13 +58,15 @@
 <!--        android:text = "Connect To Server" />-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/etMessage"
+        android:layout_below="@+id/connecttoserver_cv">
         <TextView
             android:id = "@+id/tvMessages"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
             android:inputType = "textMultiLine"
-            android:textAlignment="viewEnd"
+            android:textSize="20dp"
             />
     </androidx.core.widget.NestedScrollView>
     <EditText
