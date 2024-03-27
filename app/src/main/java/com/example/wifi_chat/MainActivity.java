@@ -18,10 +18,13 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,6 +44,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
       CardView  server,client;
+      ImageView img;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         }
         server=(CardView) findViewById(R.id.server_cv);
         client=(CardView) findViewById(R.id.client_cv);
+        img=(ImageView) findViewById(R.id.wifi_img);
+        img.startAnimation(AnimationUtils.loadAnimation(this,R.anim.wifiimg));
         server.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
