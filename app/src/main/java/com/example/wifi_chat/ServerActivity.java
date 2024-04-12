@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
@@ -42,11 +43,12 @@ public class ServerActivity extends AppCompatActivity {
     String message;
     CardView send;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "NewApi"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
+        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.white));
         }
@@ -55,10 +57,11 @@ public class ServerActivity extends AppCompatActivity {
         tvMessages = findViewById(R.id.tvMessages);
         etMessage = findViewById(R.id.etMessage);
 
-        send=(CardView) findViewById(R.id.send_cv);
+        send = (CardView) findViewById(R.id.send_cv);
 
         try {
             SERVER_IP = getLocalIpAddress();
+
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
@@ -74,6 +77,7 @@ public class ServerActivity extends AppCompatActivity {
             }
         });
     }
+
     private String getLocalIpAddress() throws UnknownHostException {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
@@ -126,6 +130,7 @@ public class ServerActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
                                 tvMessages.append("\nclient: " + message);
                             }
                         });
@@ -145,6 +150,7 @@ public class ServerActivity extends AppCompatActivity {
         private String message;
 
         Thread3(String message) {
+
             this.message = message;
         }
 
@@ -160,6 +166,5 @@ public class ServerActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
 }

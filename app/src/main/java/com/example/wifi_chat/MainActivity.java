@@ -32,6 +32,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -43,24 +44,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-      CardView  server,client;
-      ImageView img;
+    CardView server, client;
+    ImageView img;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.white));
         }
-        server=(CardView) findViewById(R.id.server_cv);
-        client=(CardView) findViewById(R.id.client_cv);
-        img=(ImageView) findViewById(R.id.wifi_img);
-        img.startAnimation(AnimationUtils.loadAnimation(this,R.anim.wifiimg));
+        server = (CardView) findViewById(R.id.server_cv);
+        client = (CardView) findViewById(R.id.client_cv);
+        img = (ImageView) findViewById(R.id.wifi_img);
+        img.startAnimation(AnimationUtils.loadAnimation(this, R.anim.wifiimg));
         server.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ServerActivity.class));
+                startActivity(new Intent(MainActivity.this, ServerActivity.class));
 
             }
         });
@@ -71,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }

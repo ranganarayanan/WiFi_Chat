@@ -12,11 +12,13 @@ import java.util.List;
 public class MessageAdapter extends ArrayAdapter<String> {
     private Context context;
     private List<String> messages;
+
     public MessageAdapter(Context context, List<String> messages) {
         super(context, 0, messages);
         this.context = context;
         this.messages = messages;
     }
+
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
@@ -27,7 +29,6 @@ public class MessageAdapter extends ArrayAdapter<String> {
         messageTextView.setText(messages.get(position));
         return view;
     }
-
 
 
 }

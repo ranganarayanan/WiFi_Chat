@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
@@ -33,13 +34,14 @@ public class ClientActivity extends AppCompatActivity {
     int SERVER_PORT;
     private PrintWriter output;
     private BufferedReader input;
-    CardView connectserver,send;
+    CardView connectserver, send;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
+        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.white));
         }
@@ -47,7 +49,7 @@ public class ClientActivity extends AppCompatActivity {
         etPort = findViewById(R.id.etPort);
         tvMessages = findViewById(R.id.tvMessages);
         etMessage = findViewById(R.id.etMessage);
-        connectserver=(CardView) findViewById(R.id.connecttoserver_cv);
+        connectserver = (CardView) findViewById(R.id.connecttoserver_cv);
         connectserver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +60,7 @@ public class ClientActivity extends AppCompatActivity {
                 Thread1.start();
             }
         });
-        send=(CardView) findViewById(R.id.send_cv);
+        send = (CardView) findViewById(R.id.send_cv);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +71,7 @@ public class ClientActivity extends AppCompatActivity {
             }
         });
     }
+
     class Thread1 implements Runnable {
         @Override
         public void run() {
@@ -98,7 +101,8 @@ public class ClientActivity extends AppCompatActivity {
             while (true) {
                 try {
                     final String message = input.readLine();
-                    if (message == null) break;
+                    if (message == null)
+                        break;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -116,6 +120,7 @@ public class ClientActivity extends AppCompatActivity {
         private String message;
 
         Thread3(String message) {
+
             this.message = message;
         }
 
@@ -126,10 +131,10 @@ public class ClientActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+
                     tvMessages.append("\nclient: " + message + "");
                 }
             });
         }
-
     }
 }
