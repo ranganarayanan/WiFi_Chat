@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.List;
-
 public class NetworkUtils {
 
     public static String getIPAddress(boolean useIPv4) {
@@ -17,7 +16,6 @@ public class NetworkUtils {
                         String sAddr = addr.getHostAddress();
                         // Boolean to check if IPv4
                         boolean isIPv4 = sAddr.indexOf(':') < 0;
-
                         if (useIPv4) {
                             if (isIPv4)
                                 return sAddr;

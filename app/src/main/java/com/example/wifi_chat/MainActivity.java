@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     CardView server, client;
     ImageView img;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "NewApi"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

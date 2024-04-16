@@ -28,6 +28,14 @@
         android:layout_height = "wrap_content"
         android:layout_below = "@+id/tvPort"
         android:textAppearance = "@style/Base.TextAppearance.AppCompat.Medium" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPort"
+        android:layout_marginTop="10dp"
+        android:id="@+id/connectionmsg_tv"
+        android:textSize="20dp"/>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

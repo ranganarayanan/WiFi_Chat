@@ -56,11 +56,18 @@
 <!--        android:layout_gravity = "center"-->
 <!--        android:layout_marginTop = "16dp"-->
 <!--        android:text = "Connect To Server" />-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/connecttoserver_cv"
+        android:layout_marginTop="10dp"
+        android:id="@+id/connectionmsg_tv"
+        android:textSize="20dp"/>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/etMessage"
-        android:layout_below="@+id/connecttoserver_cv">
+        android:layout_below="@+id/connectionmsg_tv">
         <TextView
             android:id = "@+id/tvMessages"
             android:layout_width = "match_parent"
@@ -76,6 +83,7 @@
         android:layout_above = "@+id/send_cv"
         android:hint = "Enter Message"
         android:inputType = "text" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -108,13 +116,4 @@
 <!--        android:layout_height = "wrap_content"-->
 <!--        android:layout_alignParentBottom = "true"-->
 <!--        android:text = "SEND" />-->
-
-
-
-
-
-
-
-
-
 </RelativeLayout>

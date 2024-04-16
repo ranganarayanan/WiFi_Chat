@@ -35,14 +35,13 @@ public class ServerActivity extends AppCompatActivity {
     ServerSocket serverSocket;
     Thread Thread1 = null;
     TextView tvIP, tvPort;
-    TextView tvMessages;
+    TextView tvMessages,tvconnectionmsg;
     EditText etMessage;
     Button btnSend;
     public static String SERVER_IP = "";
     public static final int SERVER_PORT = 8080;
     String message;
     CardView send;
-
     @SuppressLint({"MissingInflatedId", "NewApi"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +55,7 @@ public class ServerActivity extends AppCompatActivity {
         tvPort = findViewById(R.id.tvPort);
         tvMessages = findViewById(R.id.tvMessages);
         etMessage = findViewById(R.id.etMessage);
+        tvconnectionmsg=(TextView) findViewById(R.id.connectionmsg_tv);
 
         send = (CardView) findViewById(R.id.send_cv);
 
@@ -97,8 +97,8 @@ public class ServerActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvMessages.setText("Not connected");
-                        tvMessages.setTextColor(Color.parseColor("#FF0000"));
+                        tvconnectionmsg.setText("Not connected!!!!");
+                        tvconnectionmsg.setTextColor(Color.parseColor("#FF0000"));
                         tvIP.setText("IP: " + SERVER_IP);
                         tvPort.setText("Port: " + String.valueOf(SERVER_PORT));
                     }
@@ -109,8 +109,9 @@ public class ServerActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvMessages.setText("Connected");
-                        tvMessages.setTextColor(Color.parseColor("#00FF00"));
+                        tvconnectionmsg.setText("Connected....");
+                        tvconnectionmsg.setTextColor(Color.parseColor("#00FF00"));
+
                     }
                 });
                 new Thread(new Thread2()).start();
